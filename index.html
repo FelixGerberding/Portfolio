@@ -1,14 +1,241 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Felix Gerberding</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
-<body>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script  src="./app.js?v=155551231236"></script>
-  <style>#felix{ display:none; left: unset !important; }#float{position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#62B1FE;color:#FFF;text-align:center;box-shadow: 2px 2px 3px #999;adding:0;margin:0;display:flex;}.inside-float { margin:auto; }</style>
-  <a href="#" id="float" onclick="skip()"><span class="inside-float">Faster</span></a>
+
+<body id="app">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"></script>
+  <div onscroll="sync_scroll(this);" id="scrollSync" style="
+  position: fixed;
+  width: 48%;
+  top: 30px;
+  bottom: 30px;
+  left: 51%;
+  overflow: auto;
+">
+    <style contenteditable id="style-text" spellcheck=”false”
+      oninput="update(this); Prism.highlightElement(document.querySelector('#highlighting-content'));  " style="color: transparent;
+  background: transparent;
+  caret-color: white;
+  font-family: monospace,monospace;
+  font-size: 1em;
+  padding: 0;
+  margin: 0;"> /* 
+      * Licensed under the unlicense
+      * Use this however you like  
+      * Authored by Felix Gerberding
+      */
+
+      body {
+        background-color: #1a1c24;
+        color: #fff;
+        font-size: 13px;
+        line-height: 1.4;
+        -webkit-font-smoothing: subpixel-antialiased;
+      }
+
+     /* 
+      * ...hellooo?            
+      *
+      * Ohh, hey there. You came here for a portfolio?         
+      *
+      * I'm just sitting here coding away.            
+      * Sure, you can watch.                       
+      *
+      * But if someone is watching, I should make this a bit prettier. 
+      * i'll just type a bit and soon it will look better        
+      *
+      * Confused? Sit back!
+      *
+      */
+
+      pre {
+        position: fixed;
+        width: 48%;
+        top: 30px;
+        bottom: 30px;
+        left: 26%;
+        transition: left 500ms;
+        overflow: auto;
+        background-color: #1d1f21;
+        color: #a6c3d4;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 24px 12px;
+        box-sizing: border-box;
+        border-radius: 3px;
+        box-shadow: 0px 4px 0px 2px rgba(0, 0, 0, 0.1);
+      }
+
+
+      /* 
+       * Syntax highlighting 
+       * Colors based on Atom <3
+       */
+
+      pre em:not(.comment) {
+        font-style: normal;
+      }
+
+      .comment {
+        color: #707e84;
+      }
+
+      .selector {
+        color: #DAD085;
+      }
+
+      .selector .key {
+        color: #DAD085;
+      }
+
+      .property {
+        color: #c5c8c6;
+      }
+
+      .punctuation {
+        color: #62B1FE;
+      }
+
+
+     /* 
+      * But you're here for a portfolio, right? 
+      */
+
+
+      /* First, we'll move this stuff over */
+
+      pre:first-of-type {
+        left: 51%;
+      }
+
+      /* Now you can get your portfolio */
+
+      #felix {
+        right: 51%;
+        display: inline !important;
+        font-size: 16px;
+        word-wrap: break-word;
+        white-space: normal;
+        margin: 0;
+      }
+
+      a {
+        color: #62B1FE;
+      }
+
+     /* 
+      * I planned this all along! Have fun looking around 😇 
+      * You can also edit the CSS code! Try it out :)
+      */
+    </style>
+  </div>
+  <pre id="highlighting" aria-hidden="true" style="white-space: pre;z-index: -1;margin:0;padding:0;">
+    <code class="language-css" id="highlighting-content" spellcheck=”false”></code>
+  </pre>
+
+  <style>
+    #style-text {
+      display: inline;
+      white-space: pre-wrap;
+      transition: left 500ms;
+      overflow: auto;
+      outline: none;
+      background-color: #1d1f21;
+      color: #a6c3d4;
+    }
+
+    #felix {
+      display: none;
+      left: unset !important;
+    }
+
+    #float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #62B1FE;
+      color: #FFF;
+      text-align: center;
+      box-shadow: 2px 2px 3px #999;
+      adding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    .inside-float {
+      margin: auto;
+    }
+  </style>
+  <a href="#" id="float" onclick="skip()"><span class="inside-float">Skip</span></a>
+  <script>
+    window.update = function update(e) {
+
+      let result_element = document.querySelector("#highlighting-content");
+      Prism.highlightElement(document.querySelector("#highlighting-content"));
+      result_element.innerHTML = e.innerHTML.replace("<br>", "\n")
+
+    }
+
+    function sync_scroll(element) {
+      /* Scroll result to scroll coords of event - sync with textarea */
+      let result_element = document.querySelector("#highlighting");
+      // Get and set x and y
+      console.log(element.scrollTop)
+      result_element.scrollTop = element.scrollTop;
+      result_element.scrollLeft = element.scrollLeft;
+    }
+
+    window.onload = update(document.querySelector("#style-text"))
+  </script>
+
+  <pre id="felix">
+    <h2>Felix Gerberding</h2>
+    <p>I'm a <b id='age'></b> y/o guy from Germany that likes programming, technology and everything related to it. I love to work on interesting problems. If you want to get in touch, feel free to reach out.
+      <br>
+      <br>
+      <h3>Experience 🚀</h3>
+      <ul>
+        <li>Engineering Associate at CORE SE (since March 2022, still going)</li>
+        <li>Developer at Voltic GmbH (since 2020, 24 Months)</li>
+        <li>Working Student (Development) at XU Exponential University (since Feb 2020, 6 months)</li>
+        <li>Internship in Web-Development at Saatwerk (2017, two weeks)</li>
+      </ul>
+      <h3>Education 🏫</h3>
+      <ul>
+        <li>BSc. Coding & Software Engineering at XU Exponential University (Oct 2019 - Oct 2022)</li>
+        <li>Hannah-Arendt-Gymnasium Barsinghausen (finished 2019)</li>
+      </ul>
+      <h3>Certificates 🏆</h3>
+      <ul>
+        <li>European Business Law: Understanding the Fundamentals by <a href="https://www.coursera.org/account/accomplishments/verify/TXNCLAP4KLN7">Lund University</a></li>
+        <li>Technical Support Fundamentals by <a href="https://www.coursera.org/account/accomplishments/verify/H8CBCY5BZFRX">Google</a></li>
+        <li>Various <a href="https://blog.felix.codes/409191b6dc5347ae935cf461ea238e06">Course Certificates</a> on LinkedIn</li><li>A lot of Badges & Certificates on <a href='https://www.hackerrank.com/gerberding_felix'>Hackerrank</a></li>
+      </ul>
+      <h3>Projects ⚙️</h3>
+      I've worked on lots of projects, large and small. These are some of my favorites:
+      <ul>
+        <li><a href="https://blog.felix.codes/IconGenerator-eu-Hobby-Project-fef81e7c338944ff8400c519f211124c">icongenerator.eu</a> [ 2018 - 2020 | JavaScript, jQuery, PHP ]</li>
+        <li><a href="https://blog.felix.codes/Dinermind-University-Project-d39260202d1447d3a0ef994c4cc9848f">Dinermind (Uni-Project)</a> [ 2021 | Kotlin, Android ]</li>
+        <li><a href="https://einhorn.guide">einhorn.guide</a> [ 2022 - now | Markdown, TypeScript, Static-Site ]</li>
+        <li><a href="https://blog.felix.codes/TeamSpeak-gg-Hobby-Project-46a938be651a4ac6a69fc69ccd8c030d">TeamSpeak.gg</a> [ 2018 - 2020 | AWS, JavaScript, Serverless ]</li>
+      </ul>
+      <h3>Socials</h3>
+      <ul>
+        <li><a href='https://www.linkedin.com/in/felix-gerberding/'>LinkedIn</a></li>
+        <li><a href='https://github.com/DrOpossum'>GitHub</a></li>
+        <li><a href='https://twitter.com/FelixGerberding'>Twitter</a></li>
+        <li><a href='https://stackoverflow.com/users/7845355/felix-gerberding'>StackOverflow</a></li>
+        <li><a href='https://blog.felix.codes/'>My Personal Blog</a></li>
+      </ul>
+    </pre>
+    <script src="/app.js"></script>
+
 </body>
+
 </html>
