@@ -9,6 +9,69 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!--
+    schema.org Person. Kept identical (same @id) to the node emitted by
+    blog.felix.codes (see src/data/person.ts there) so both domains resolve to
+    ONE entity for search engines and AI search. If you change one, change both.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://blog.felix.codes/#felix",
+    "name": "Felix Gerberding",
+    "jobTitle": "Technical Account Manager",
+    "description": "Speaker on agentic AI in production, cloud and serverless architecture, and enterprise cloud operations. Technical Account Manager at AWS, based in Berlin. Talks in German and English.",
+    "image": "https://blog.felix.codes/images/speaking/headshot.png",
+    "url": "https://felix.codes",
+    "worksFor": { "@type": "Organization", "name": "Amazon Web Services (AWS)" },
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Berlin, Germany",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Berlin",
+        "addressRegion": "Berlin",
+        "addressCountry": "DE"
+      }
+    },
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Public speaker",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Berlin, Germany",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Berlin",
+          "addressRegion": "Berlin",
+          "addressCountry": "DE"
+        }
+      }
+    },
+    "knowsAbout": [
+      "Agentic AI",
+      "Cloud architecture",
+      "Serverless",
+      "Amazon Web Services (AWS)",
+      "Enterprise cloud operations",
+      "Software architecture",
+      "TypeScript"
+    ],
+    "knowsLanguage": ["de", "en"],
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "XU Exponential University of Applied Sciences" },
+    "sameAs": [
+      "https://www.linkedin.com/in/felix-gerberding/",
+      "https://sessionize.com/felix-gerberding/",
+      "https://x.com/FelixGerberding",
+      "https://github.com/FelixGerberding",
+      "https://stackoverflow.com/users/7845355/felix-g",
+      "https://medium.com/@FelixGerberding",
+      "https://felix.codes"
+    ]
+  }
+  </script>
 </head>
 
 <body id="app">
@@ -426,6 +489,7 @@
         <li><a href='http://github.com/FelixGerberding'>GitHub</a></li>
         <li><a href='https://twitter.com/FelixGerberding'>Twitter</a></li>
         <li><a href='https://stackoverflow.com/users/7845355/felix-gerberding'>StackOverflow</a></li>
+        <li><a href='https://sessionize.com/felix-gerberding/' rel='me'>Sessionize (speaker profile)</a></li>
         <li><a href='https://felix.codes'>felix.codes</a></li>
         <li><a href='https://blog.felix.codes/'>My Personal Blog</a></li>
       </ul>
